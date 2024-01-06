@@ -19,25 +19,25 @@ public class FileController {
     @RequestMapping(value="/files/upload", method= RequestMethod.POST)
     public
     @ResponseBody
-    ApiResponse uploadFile(@RequestParam(required = false) MultipartFile file, @RequestParam(required = false) String name) {
-        return new SuccessResponse(fileService.uploadFile(file, name), "success", 200);
+    ApiResponse uploadFile(@RequestBody(required = false) MultipartFile fileData, @RequestParam(required = false) String name) {
+        return new SuccessResponse(fileService.uploadFile(fileData, name), "success", 200);
     }
 
-    @RequestMapping(value="/files/:fileId", method= RequestMethod.GET)
+    @RequestMapping(value="/files/{fileId}", method= RequestMethod.GET)
     public
     @ResponseBody
     ApiResponse getFile( @PathVariable(required = false) String fileId) {
         return new SuccessResponse(fileService.getFile(fileId), "success", 200);
     }
 
-    @RequestMapping(value="/files/:fileId", method= RequestMethod.PUT)
+    @RequestMapping(value="/files/{fileId}", method= RequestMethod.PUT)
     public
     @ResponseBody
     ApiResponse updateFile(@RequestParam(required = false) MultipartFile file, @PathVariable(required = false) String fileId) {
         return new SuccessResponse(fileService.updateFile(fileId, file), "success", 200);
     }
 
-    @RequestMapping(value="/files/:file", method= RequestMethod.DELETE)
+    @RequestMapping(value="/files/{fileId}", method= RequestMethod.DELETE)
     public
     @ResponseBody
     ApiResponse deleteFile(@PathVariable(required = false) String fileId) {
