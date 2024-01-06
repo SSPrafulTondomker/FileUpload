@@ -44,7 +44,7 @@ public class FileController {
         return new SuccessResponse(fileService.deleteFile(fileId), "success", 200);
     }
 
-    @RequestMapping(value="/files", method= RequestMethod.DELETE)
+    @RequestMapping(value="/files", method= RequestMethod.GET)
     public
     @ResponseBody
     ApiResponse getFiles() {
